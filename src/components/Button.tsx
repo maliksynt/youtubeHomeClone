@@ -13,6 +13,11 @@ const buttonStyles = cva(
       variant: {
         default: ["bg-secondary", "hover:background-secondary-hover"], // Style par défaut
         ghost: ["hover:bg-gray-100"], // Style pour la variante 'ghost'
+        dark: [
+          "bg-secondary-dark",
+          "hover:bg-secondary-dark-hover",
+          "text-secondary",
+        ], // Style pour la variante 'dark'
       },
       // Variante 'size' avec les options 'default' et 'icon'
       size: {
