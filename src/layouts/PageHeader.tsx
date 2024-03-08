@@ -2,23 +2,13 @@ import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
 import YoutubeLogo from "../assets/youtube-logo-png-transparent-image-5.webp";
 import Button from "../components/Button";
 import { useState } from "react";
+import { useSidebarContext } from "../context/SidebarContext";
 
 export default function PageHeader() {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
   return (
     <div className="flex items-center justify-between gap-10 pt-2 mx-4 mb-6 lg:gap-20">
-      <div
-        className={`items-center flex-shrink-0 gap-4 ${
-          showFullWidthSearch ? "hidden" : "flex"
-        }`}
-      >
-        <Button variant="ghost" size="icon">
-          <Menu />
-        </Button>
-        <a href="/">
-          <img src={YoutubeLogo} alt="Youtube Logo" className="h-14" />
-        </a>
-      </div>
+      <PageHeaderFirstSection hidden={showFullWidthSearch} />
       <form
         className={`justify-center flex-grow gap-4 ${
           showFullWidthSearch ? "flex" : "hidden  md:flex"
@@ -87,6 +77,31 @@ export default function PageHeader() {
           <User />
         </Button>
       </div>
+    </div>
+  );
+}
+
+type PageHeaderFirstSectionProps = {
+  hidden?: boolean;
+};
+
+export function PageHeaderFirstSection({
+  hidden = false,
+}: PageHeaderFirstSectionProps) {
+  const { toggle } = useSidebarContext();
+
+  return (
+    <div
+      className={`items-center flex-shrink-0 gap-4 ${
+        hidden ? "hidden" : "flex"
+      }`}
+    >
+      <Button variant="ghost" size="icon" onClick={toggle}>
+        <Menu />
+      </Button>
+      <a href="/">
+        <img src={YoutubeLogo} alt="Youtube Logo" className="h-14" />
+      </a>
     </div>
   );
 }

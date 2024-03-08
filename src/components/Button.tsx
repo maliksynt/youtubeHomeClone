@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 // Définition des styles de base et des variantes pour le bouton en utilisant cva (class-variance-authority)
-const buttonStyles = cva(
+export const buttonStyles = cva(
   // Styles de base appliqués à tous les boutons
   ["hover:bg-secondary-hover", "transition-colors"],
   {
